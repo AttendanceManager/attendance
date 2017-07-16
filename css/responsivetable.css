@@ -1,0 +1,22 @@
+.scrolling table {
+    table-layout: inherit;
+
+}
+.scrolling td, th {
+  vertical-align: top;
+	padding: 10px;
+	min-width: 100px;
+}
+.scrolling th {
+	position: absolute;
+    left: 0;
+	margin-top: auto;
+}
+.outer {
+	position: absolute;
+}
+.inner {
+	overflow-x: auto;
+	overflow-y: visible;
+	margin-left: 120px;
+}

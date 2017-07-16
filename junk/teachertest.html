@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='css/roboto.css' type='text/css'>
+    <link href='css/MatIco.css' rel='stylesheet'>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+    <link href='css/bootstrap-material-design.css' rel='stylesheet'>
+    <link href='css/ripples.min.css' rel='stylesheet'>
+    <link href='css/snackbar.css' rel='stylesheet'>
+    <title>Teacher Dashboard</title>
+
+</head>
+
+<body>
+
+    <div class='bs-component'>
+        <div class='navbar navbar-danger'>
+            <div class='container-fluid'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-responsive-collapse'>
+                  <span class='icon-bar'></span>
+                  <span class='icon-bar'></span>
+                  <span class='icon-bar'></span>
+                </button>
+                    <a class='navbar-brand' href='#'>CM</a>
+                </div>
+                <div class='navbar-collapse collapse navbar-responsive-collapse'>
+                    <ul class='nav navbar-nav navbar-left'>
+                        <li class='active'><a data-toggle='tab' href='#ManualAttendance'>Manual Attendance <span class='badge'></span></a></li>
+                        <li><a data-toggle='tab' href='#AddAssignment'>Add Assignment <span class='badge'></span></a></li>
+                        <li><a data-toggle='tab' href='#AddASubject'>Add A Subject <span class='badge'></span></a></li>
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li><a href='test.php'>LogOut <span class='glyphicon glyphicon-log-out'></span><div class='ripple-container'></div></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BODY-->
+
+    <div class='jumbotron bs-component' style='text-align:center;'>
+        
+    </div>
+
+    <div class='tab-content'>
+        <div id='ManualAttendance' class='tab-pane fade in active'>
+            <div class='jumbotron' style='text-align:center;'>
+                <div class='col-md-4'></div>
+                <div class='col-md-4'>
+                    <form class='form-horizontal' style='background-color:white;'>
+                        <fieldset>
+                            <legend>
+                                Please Choose A Semester And A Subject:
+                            </legend>
+                            <div class='form-group'>
+                                <label for='semesterSelect' class='col-md-4'>Semester :</label>
+                                <div class='col-md-4'>
+                                    <select id='semesterSelect' class='form-control'>
+                                      <option value='$semester_value'>$semester_value</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='subjectSelect' class='col-md-4'>Subject :</label>
+                                <div class='col-md-8'>
+                                    <select id='semesterSelect' class='form-control'>
+                                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ClassList">Open Modal</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div id='AddAssignment' class='tab-pane fade'>
+            <div class='jumbotron' style='text-align:center;'>
+                <h3>We'll Be Available Soon</h3>
+            </div>
+        </div>
+        <div id='AddASubject' class='tab-pane fade'>
+            <div class='jumbotron' style='text-align:center;'>
+                <h3>We'll Be Available Soon</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='modal fade' id='ClassList'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title'>Class List</h4>
+                </div>
+                <div class='modal-body'>
+                    <p>One fine body…</p>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                    <button type='button' class='btn btn-primary'>Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script src='js/ripples.min.js'></script>
+    <script src='js/material.min.js'></script>
+    <script src='js/snackbar.min.js'></script>
+    <script src='js/jquery.nouislider.min.js'></script>
+
+</body>
+<hr>
+<footer class=' bscomponent navbar navbar-fixed-bottom navbar-danger'>
+
+    <div class='container-fluid' style='padding:20px;'>
+        <div class='row'>
+            <div class='col-md-4' style='text-align:center;'>
+                <a href='#' style='color:#FFF;'>About Us</a>
+            </div>
+            <div class='col-md-4' style='text-align:center;color:#FFF;'>
+                <a href='#' style='color:#FFF;'>Contact Us</a>
+            </div>
+            <div class='col-md-4' style='text-align:center;color:#FFF;'>
+                <a href='#' style='color:#FFF;'>Team</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>

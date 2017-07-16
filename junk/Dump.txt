@@ -1,0 +1,99 @@
+Command to enter new Attendance
+
+ALTER TABLE `cen403` ADD `_04_06_2017` INT(1) NOT NULL DEFAULT '0' AFTER `roll_num`, ADD `_05_06_2017` INT(1) NOT NULL DEFAULT '0' AFTER `_04_06_2017`, ADD `_07_06_2017` INT(1) NOT NULL DEFAULT '0' AFTER `_05_06_2017`;
+
+
+HTML Code for attendance % cards
+
+<!--While Loop Starts For each Subject-->
+<!--If Attendance > 75 % -->
+<div class='col-md-4'>
+    <div class='panel panel-success'>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>{Subject Name}</h3>
+        </div>
+        <div class='panel-body'>
+            <b>X %</b>
+            <br>
+            <div class='progress'>
+                <div class='progress-bar progress-bar-success' style='width: 80%'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--If Attendance >40% But <75%-->
+<div class='col-md-4'>
+    <div class='panel panel-warning'>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>{Subject Name}</h3>
+        </div>
+        <div class='panel-body'>
+            <b>X %</b>
+            <br>
+            <div class='progress'>
+                <div class='progress-bar progress-bar-warning' style='width: 56%'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--If Attendance <40%-->
+<div class='col-md-4'>
+    <div class='panel panel-danger'>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>{Subject Name}</h3>
+        </div>
+        <div class='panel-body'>
+            <b>X %</b>
+            <br>
+            <div class='progress'>
+                <div class='progress-bar progress-bar-danger' style='width: 30%'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='col-md-4'>
+    <div class='panel panel-success'>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>{Subject Name}</h3>
+        </div>
+        <div class='panel-body'>
+            <b>X %</b>
+            <br>
+            <div class='progress'>
+                <div class='progress-bar progress-bar-success' style='width: 80%'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='col-md-4'>
+    <div class='panel panel-success'>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>{Subject Name}</h3>
+        </div>
+        <div class='panel-body'>
+            <b>X %</b>
+            <br>
+            <div class='progress'>
+                <div class='progress-bar progress-bar-success' style='width: 80%'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--While Loop Ends-->
+<div class='row' style='margin:10px;'>
+    <div class='col-md-12'>
+        <div class='panel panel-success'>
+            <!--Or warning or alert accordingly-->
+            <div class='panel-heading'>
+                <h3 class='panel-title'>Aggregate</h3>
+            </div>
+            <div class='panel-body'>
+                <b>X %</b>
+                <br>
+                <div class='progress'>
+                    <div class='progress-bar progress-bar-success' style='width: 80%'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
