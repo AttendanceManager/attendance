@@ -17,9 +17,14 @@
         }
     }
     $first_name = ucfirst(strtolower($_SESSION['first_name']));
+    
     $roll_num = $_SESSION['roll_num'];
+    $middle_name = ucfirst(strtolower($_SESSION['middle_name']));
+    $last_name = ucfirst(strtolower($_SESSION['last_name']));
     $branch = $_SESSION['branch'];
     $semester = $_SESSION['semester'];
+
+    $first_name = $first_name.' '.$last_name;
 
 echo "
 <!doctype html>
@@ -60,7 +65,14 @@ echo "
                         <li><a data-toggle='tab' href='#ResultManager'>Result Manager <span class='badge'></span></a></li>
                     </ul>
                     <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='test.php'>LogOut <span class='glyphicon glyphicon-log-out'></span><div class='ripple-container'></div></a></li>
+                        <li class=\"dropdown\">
+                          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">$first_name</a>
+                          <ul class=\"dropdown-menu\">
+                            <li><a  href=\"changePassword.php\">Change Password</a></li>
+                            <li class=\"divider\"></li>
+                            <li><a href=\"test.php\">Sign Out <span class=\"glyphicon glyphicon-log-out pull-right\"></span></a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

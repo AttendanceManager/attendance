@@ -22,13 +22,12 @@
         }
     }
 
-
         $status =$_SESSION['status'];
         $first_name =$_SESSION['first_name'];
-        $teacher_id = $_SESSION['teacher_id'];
+       // $teacher_id = $_SESSION['teacher_id'];
         $middle_name = $_SESSION['middle_name'];
         $last_name = $_SESSION['last_name'];
-
+        $Email = $_SESSION['Email'];
         $first_name = $first_name.' '.$middle_name;
 
       echo "
@@ -72,7 +71,7 @@
               function load_complete_list(){
                     var sem = document.getElementById('semesterSelect').value;
                     var SubjectCode = document.getElementById('subjectSelect').value;
-                    var tabData = '<tr><th>Date </th><td>Content One</td><td>Longer Content Two</td><td>Third Content Contains More</td>                                    <td>Short Four</td><td>Standard Five</td>                                    <td>Who\'s Counting</td></tr> <tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr><tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr><tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr>';
+                    //var tabData = '<tr><th>Date </th><td>Content One</td><td>Longer Content Two</td><td>Third Content Contains More</td>                                    <td>Short Four</td><td>Standard Five</td>                                    <td>Who\'s Counting</td></tr> <tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr><tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr><tr><th>lolo</th><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td><td>12</td></tr>';
                     
                   if (window.XMLHttpRequest) {
 
@@ -143,62 +142,60 @@
       </head>
 
       <body>
-
+          
           <div class='bs-component'>
-              <div class='navbar navbar-danger'>
-                  <div class='container-fluid'>
-                      <div class='navbar-header'>
-                          <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-responsive-collapse'>
+        <div class='navbar navbar-danger'>
+            <div class='container-fluid'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-responsive-collapse'>
                         <span class='icon-bar'></span>
                         <span class='icon-bar'></span>
                         <span class='icon-bar'></span>
                       </button>
-                          <a class='navbar-brand' href='#'>CM</a>
-                      </div>
-                      <div class='navbar-collapse collapse navbar-responsive-collapse'>
-                          <ul class='nav navbar-nav navbar-left'>
-                              <li  class='active'><a data-toggle='tab' href='#ManualAttendance'>Manual Attendance <span class='badge'></span></a></li>	
-                              <li><a data-toggle='tab' href='#AddAssignment'>Add Assignment <span class='badge'></span></a></li>
-                              <li><a data-toggle='tab' href='#AddASubject'>Add A Subject <span class='badge'></span></a></li>
+                    <a class='navbar-brand' href='#'>CM</a>
+                </div>
+                <div class='navbar-collapse collapse navbar-responsive-collapse'>
+                    <ul class='nav navbar-nav navbar-left'>
+                        <li class='active'><a data-toggle='tab' href='#ManualAttendance'>Manual Attendance<span class='badge'></span></a></li>
+                        <li><a data-toggle='tab' href='#AddAssignment'>Add Assignment <span class='badge'></span></a></li>
+                        <li><a data-toggle='tab' href='#AddASubject'>Add A Subject <span class='badge'></span></a></li>
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class=\"dropdown\">
+                          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">$first_name</a>
+                          <ul class=\"dropdown-menu\">
+                            <li><a href=\"changePassword.php\">Change Password</a></li>
+                            <li class=\"divider\"></li>
+                            <li><a href=\"test.php\">Sign Out <span class=\"glyphicon glyphicon-log-out pull-right\"></span></a></li>
                           </ul>
-                          <ul class='nav navbar-nav navbar-right'>
-                              <li><a href='test.php'>LogOut <span class='glyphicon glyphicon-log-out'></span><div class='ripple-container'></div></a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
           <!--BODY-->
-
-          <div class='jumbotron bs-component' style='text-align:center;'>
-              <h1>Welcome $first_name </h1>
-              <h3>TEACHER'S DASHBOARD</h3>
-          </div>
-
-          <div class='jumbotron bs-component' id='testfield' style='text-align:center;'>
-
-          </div>
-
-          <div class='tab-content row'>";
-           echo " 
+           
+           <div class='tab-content row'>";
+echo " 
            <div id='AddAssignment' class='tab-pane fade'>
                 <div class='jumbotron' style='text-align:center;'>
                     <h3>We'll Be Available Soon</h3>
                 </div>
             </div>
-           <div id='ManualAttendance' class='tab-pane fade in active'>
-                  <div class='jumbotron' style='text-align:center;'>
-                      <div class='col-md-4'></div>
-                      <div class='col-md-4'>
-                          <form class='form-horizontal' style='background-color:white;'>
-                              <fieldset>
-                                  <legend >
-                                      Choose a semester and a subject:
-                                  </legend>
-                                  <div class='form-group'>
-                                      <label for='semesterSelect' class='col-md-4'>Semester :</label>
-                                      <div class='col-md-4'>
+            <div id='ManualAttendance' class='tab-pane fade in active'>
+            <div class='jumbotron' style='text-align:center;'>
+                <div class='col-md-4'></div>
+                <div class='col-md-4'>
+                    <form class='form-horizontal' style='background-color:white;'>
+                        <fieldset>
+                            <legend>
+                                Choose a semester and a subject:
+                            </legend>
+                            <div class='form-group'>
+                                <label for='semesterSelect' class='col-md-4'>Semester :</label>
+                                <div class='col-md-4'>
                                           <select id='semesterSelect' class='form-control' onchange='subject_acc_to_sem();'>
                                             <option value=0>Select</option>";
 
@@ -216,37 +213,37 @@
                         </div>";
             
             echo"    <div class='form-group'>
-                          <label for='subjectSelect' class='col-md-4'>Subject :</label>
-                          <div class='col-md-4'>
-                              <select id='subjectSelect' class='form-control'>
-                              <option value=0 selected>Select</option>
+                                <label for='subjectSelect' class='col-md-4'>Subject :</label>
+                                <div class='col-md-4'>
+                                    <select id='subjectSelect' class='form-control'>
+                              <option value=0 selected>Subject Name</option>
                               </select>
-                          </div>
-                        </div>
-                        <button type='button' class='btn btn-primary' id = 'btn-load-list' onclick='load_complete_list();'>Open The List</button>
-                       
-          </fieldset>
-                      </form>
-                    </div>
-                  </div>
-                  <br>
-                  </div>";
+                                </div>
+                            </div>
+                            <button type='button' class='btn btn-primary' id='btn-load-list' onclick='load_complete_list();'>Open The List</button>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>";
 //yaha se
 
-           echo "   
-           <div id='AddASubject' class='tab-pane fade>
-                  <div class='jumbotron' style='text-align:center;'>
-                      <div class='col-md-4'></div>
-                      <div class='col-md-4'>
-                          <form class='form-horizontal' style='background-color:white;'>
-                              <fieldset>
-                                  <legend >
-                                      Choose a semester and a subject:
-                                  </legend>
-                                  <div class='form-group'>
-                                      <label for='semesterSelect' class='col-md-4'>Semester :</label>
-                                      <div class='col-md-4'>
-                                        <select id='addSemesterSelect' class='form-control' onchange='add_subject_acc_to_sem();'>
+echo "   
+          <div id='AddASubject' class='tab-pane fade in'>
+            <div class='jumbotron' style='text-align:center;'>
+                <div class='col-md-4'></div>
+                <div class='col-md-4'>
+                    <form class='form-horizontal' style='background-color:white;'>
+                        <fieldset>
+                            <legend>
+                                Choose a semester and a subject:
+                            </legend>
+                            <div class='form-group'>
+                                <label for='semesterSelect' class='col-md-4'>Semester :</label>
+                                <div class='col-md-4'>
+                                    <select id='addSemesterSelect' class='form-control' onchange='add_subject_acc_to_sem();'>
                                             <option value=0>Select</option>
                                             <option value=1>1</option>
                                             <option value=2>2</option>
@@ -256,27 +253,81 @@
                                             <option value=6>6</option>
                                             <option value=7>7</option>
                                             <option value=8>8</option>
-                                            
+
                                         </select>
-                      </div>
-                        </div>
-                        <div class='form-group'>
-                          <label for='subjectSelect' class='col-md-4'>Subject :</label>
-                          <div class='col-md-4'>
-                              <select id='addSubjectSelect' class='form-control'>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label for='subjectSelect' class='col-md-4'>Subject :</label>
+                                <div class='col-md-4'>
+                                    <select id='addSubjectSelect' class='form-control'>
                               <option value=0 selected>Select</option>
                               </select>
-                          </div>
-                        </div>
-                        <button type='button' class='btn btn-primary' onclick = 'registerSubject();' id = 'btn-register'>Register</button>
-                        <div id = 'msg_backend_register'>  </div>
-                       
-          </fieldset>
-                      </form>
-                    </div>
-                  </div>
-                  <br>
-                  </div>";
+                                </div>
+                            </div>
+                            <button type='button' class='btn btn-primary' onclick='registerSubject();' id='btn-register'>Register</button>
+                            <div id='msg_backend_register'> </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>";
+
+//yaha tak
+
+    echo "
+    <div id='changePassword' class='tab-pane fade'>
+            <!--
+                This is the Form for changing the password for the user.
+                Kindly logout the user as soon as he changes his password
+                as there is a bug in twitter bootstrap that makes
+                a nested tab impossible to be reactivated again.
+            -->
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                <div class='well bs-component'>
+                    <form class='form-horizontal'>
+                        <fieldset>
+                            <legend style='text-align: center;'>
+                                Change Password
+                            </legend>
+                            <div class='form-group is-empty'>
+                                <label for='currentPassword' class='col-md-2 control-label'>Current Password :</label>
+                                <div class='col-md-10'>
+                                    <input type='password' class='form-control' id='currentPassword' placeholder='Enter Your Current Password' name='currentPassword' required>
+                                </div>
+                            </div>
+                            <div class='form-group is-empty'>
+                                <label for='newPassword' class='col-md-2 control-label'>New Password :</label>
+                                <div class='col-md-10'>
+                                    <input type='password' class='form-control' id='newPassword' placeholder='Enter Your New Password' name='newPassword' onKeyUp='passwordmatch();' required>
+                                </div>
+                            </div>
+                            <div class='form-group is-empty'>
+                                <label for='confirmNewPassword' class='col-md-2 control-label'>Confirm New Password :</label>
+                                <div class='col-md-10'>
+                                    <input type='password' class='form-control' id='confirmNewPassword' placeholder='Re-Enter Your New Password' name='confirmNewPassword' onKeyUp='passwordmatch();' required>
+                                </div>
+                                <span id='confirmMessage' class='confirmMessage'></span>
+                            </div>
+                            <div class='form-group'>
+                                <div class='col-md-10 col-md-offset-2'>
+                                    <a href='teacherDashboard.html'><button type='button' class='btn btn-default' >Cancel<div class='ripple-container'></div></button></a>
+                                    <span id='button_group'>
+                                        <button type='submit' class='btn btn-primary' id='submit_button'>Submit<div class='ripple-container'></div></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    ";
+
 
 echo "      
         </div>     
@@ -287,7 +338,7 @@ echo "
                     <div class='scrolling'>
                         <div class='inner' >";
 
-echo"                       <table class='table table-striped table-hover table-condensed'                                         id='tabAttendance'>
+echo"                       <table class='table table-striped table-hover table-condensed' id='tabAttendance'>
                                <!--  <tr>
                                     <th>Date </th>
                                     <td>Content One</td>
@@ -329,7 +380,8 @@ echo"                       <table class='table table-striped table-hover table-
                     </div>
                 </div>
             </div>
-        </div>
+        </div>       
+        
 
         <script src='js/jquery-1.10.2.min.js'></script>
         <script src='js/bootstrap.min.js'></script>

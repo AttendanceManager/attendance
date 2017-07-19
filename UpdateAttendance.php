@@ -1,21 +1,24 @@
 <?php
 require 'db.php';
- //$JSONstr = file_get_contents('php://input');
+
 $JSONstr ='{
-                  "Date":"_05_11_13_08",
+                  "Date":"_19_11_17_01",
                   "NoOfClass":"1",
-		          "VerifyStr":"jsfdh@gmail.com",
-                  "Password":"1",
-                  "SubjectCode":"CEN302",
-                  "Attendance": ["15BCS0039","15BCS0034"],
-                  "ManualAttendance":["35"]
+		          "VerifyStr":"JMIAM0002",
+                  "SubjectCode":"CEN301",
+                  "Attendance": ["15BCS0039","15BCS0040"],
+                  "ManualAttendance":[35]
            }';
+//$JSONstr = file_get_contents('php://input');
+//$JSONstr = (string)$JSONstr;
+
+//$JSONstr = '{"VerifyStr":"JMIAM0001","SubjectCode":"CEN302","Semester":3,"NoOfClass":"2","Date":"_19_06_17_00","Attendance":[],"ManualAttendance":[1,34]}';
 
 class resp 
     {
         function resp()
         {
-            $this->ErrorCode = 0;
+            $this->ErrorCode = "0";
             $this->Message = null;
         }
     }
@@ -27,14 +30,14 @@ $Email = "";
 $phoneNo = "";
 
 $VerifyStr = trim($MyObj->VerifyStr);
-$Password = md5(md5($MyObj->Password));
+//$Password = md5(md5($MyObj->Password));
 $SubjectCode = trim($MyObj->SubjectCode);
 
 $flag = 0;
 
 if(substr($VerifyStr,0, 5) == "JMIAM" && strlen($VerifyStr) == 9)
 {
-    echo "TId";
+    //echo "TId";
     $TId = $VerifyStr;
     $query  = "SELECT Email FROM TeacherBase WHERE TId = '$VerifyStr'";
     $result = $conn->query($query);
@@ -65,7 +68,7 @@ if(substr($VerifyStr,0, 5) == "JMIAM" && strlen($VerifyStr) == 9)
 }
 else if(filter_var($VerifyStr, FILTER_VALIDATE_EMAIL))
 {
-    echo "Email";
+    //echo "Email";
     
     $query  = "SELECT TId FROM TeacherBase WHERE Email = '$VerifyStr'";
     $result = $conn->query($query);
@@ -98,7 +101,7 @@ else if(filter_var($VerifyStr, FILTER_VALIDATE_EMAIL))
 }
 else if(1 === preg_match('~[0-9]~', $VerifyStr) && strlen($VerifyStr) == 10)
 {
-    echo "phone number";
+    //echo "phone number";
     
     $query  = "SELECT Email FROM UserBase WHERE PhoneNo = '$VerifyStr'";
     $result = $conn->query($query);
@@ -134,7 +137,7 @@ else if(1 === preg_match('~[0-9]~', $VerifyStr) && strlen($VerifyStr) == 10)
     }
 }
 
-echo $flag."<br>";
+//echo $flag."<br>";
 if($flag == 5)
 {
     // everything ok. update the attendance
@@ -150,7 +153,7 @@ if($flag == 5)
         foreach($Attendance as $a)
         {
             $a = trim($a);
-            echo $a."<br>";
+            //echo $a."<br>";
             $query = "UPDATE $SubjectCode SET $Date = $NoOfClass WHERE RollNo = '$a'";
             if(!$conn->query($query))
             {
@@ -160,8 +163,14 @@ if($flag == 5)
         
         foreach($ManualAttendance as $a)
         {
-            $a = trim($a);
-            echo $a."<br>";
+            $a = (string)($a);
+            $len = strlen($a);
+            if($len == 1)
+            {
+                $a = "0".$a;
+            }
+
+            //echo $a."<br>";
             $query = "UPDATE $SubjectCode SET $Date = $NoOfClass WHERE RollNo LIKE '%$a'";
             if(!$conn->query($query))
             {
@@ -173,7 +182,7 @@ if($flag == 5)
         $flag =7;
     if($flag == 5)
     {
-        $response->ErrorCode = 0;
+        $response->ErrorCode = "0";
         $response->Message = "Attendance taken. Thank you.";
     }
     
@@ -181,33 +190,34 @@ if($flag == 5)
 else if($flag == 1)
 {
     //password does not match
-    $response->ErrorCode = 1;
+    $response->ErrorCode = "1";
     $response->Message = "Attendance NOT Taken. Password does not match.";
 }
 else if($flag == 2)
 {
     // pass matches but not a teacher
-    $response->ErrorCode = 1;
+    $response->ErrorCode = "1";
     $response->Message = "Attendance NOT Taken. You need to be a teacher to take the attendance.";
 }
 else if($flag == 3)
 {
     // pass matches, a teacher, but not not the one teaching that subject
-    $response->ErrorCode = 1;
+    $response->ErrorCode = "1";
     $response->Message = "Attendance NOT Taken. Seems like you do not teach this subject.";
 }
 if($flag == 7)
 {
     // problem while updating the attendance
-    $response->ErrorCode = 1;
+    $response->ErrorCode = "1";
     $response->Message = "Attendance NOT Taken. Please take the attendance again. Remember, you cannot take the attendance twice in the same hour. Sorry for the inconvenience.";
 }
 else if($flag == 6)
 {
     // column of date not made
-    $response->ErrorCode = 1;
+    $response->ErrorCode = "1";
     $response->Message = "Attendance NOT Taken. Please take the attendance again. Sorry for the inconvenience.";
 }
-echo $flag;
-echo json_encode($response);  
+//echo $flag;
+echo json_encode($response);
+
 ?>

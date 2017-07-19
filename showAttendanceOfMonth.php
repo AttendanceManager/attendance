@@ -22,6 +22,7 @@
       <link href='css/ripples.min.css' rel='stylesheet'>
       <link href='css/snackbar.css' rel='stylesheet'>
       <link href='css/responsivetable.css' rel='stylesheet'>
+      
 </head>
 <body>
     <div class='bs-component'>
@@ -211,13 +212,20 @@ if($Semester == 0)
         echo "</tr>";
     }                          
     }
-   
+
    echo " </table>
                     </div>
                 </div>
+                <form method='get' action='pdf.php' target='_blank'>
+                    <input type='hidden' name='Code' value = $SubjectCode>
+                    <input type='hidden' name ='Mon' value = $mon>
+                <input type='SUBMIT' value='Save PDF' >
+                </form>
             </div>
+            
         </div>
     </div>
+    
 
   <script src='js/jquery-1.10.2.min.js'></script>
   <script src='js/bootstrap.min.js'></script>

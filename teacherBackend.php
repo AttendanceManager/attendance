@@ -102,17 +102,20 @@ else if($request_code == 4)
     while($row = $result->fetch_assoc())
     {
         $AttendMonth[++$j] = substr($row['COLUMN_NAME'],4,2);
+       // echo $AttendMonth[$j];
         $Classes[$j] = (int)substr($row['COLUMN_NAME'],-1);
     }
-        
-   // $AttendMonth = array(1,1,1,1,2,2,2,4,4,4,4,5,5,6);
-   // echo $j."<br>";
+
+    for($i = 0;$i<=$j;$i++)
+    {
+        echo $AttendMonth[$i]." ".$Classes[$i];
+    }echo $j;
+
     $ctr = 1;
     $sumClass = $Classes[0];
-    //echo "j=$j<br>";
+
     for( $i = 1;$i<=$j;$i++)
     {
-        //echo $AttendMonth[$i]."<br>";
         if($AttendMonth[$i] == $AttendMonth[$i-1])
         {
             $ctr++;
@@ -129,7 +132,7 @@ else if($request_code == 4)
     $NoOfDaysInMonth[$p] = $ctr;
     $ClassesMonth[$p++] = $sumClass;
     $TDArray[0][0] = "Roll No/Month";
-    //echo "p = $p<br>";
+
     $l = 1;
     
     for($i = 1;$i <= $j;)

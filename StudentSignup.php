@@ -4,25 +4,25 @@
 //$JSONstr ='{"RollNo":"15BCS040", "SimID":"42342342","SNo":"ZY2222FXV5","Name":"Shivaak Tripathi", "EnrollmentNo":"422342","Semester":"2","Department":"Comp", "Password":"42342342","PhoneNo":"934234324"}';     
 
 class resp 
-    {
-            function resp(){
-            $this->Name = null;
-            $this->RollNo = null;
-            $this->EnrollmentNo = null;
-            $this->SimID = null;
-            $this->SNo = null;
-            $this->Department = null;
-            $this->Password = null;
-            $this->PhoneNo = null;
-            $this->Semester = null;
-            $this->error = null;
-            $this->error_msg = null;
-        }
+{
+        function resp(){
+        $this->Name = null;
+        $this->RollNo = null;
+        $this->EnrollmentNo = null;
+        $this->SimID = null;
+        $this->SNo = null;
+        $this->Department = null;
+        $this->Password = null;
+        $this->PhoneNo = null;
+        $this->Semester = null;
+        $this->error = null;
+        $this->error_msg = null;
     }
+}
     $response = new resp();
     
     $Object = json_decode($JSONstr);
-   $response->error_msg = $JSONstr;
+    $response->error_msg = $JSONstr;
    // echo json_encode($response);
     @$Name = $Object->Name;
     @$RollNo =  strtoupper($Object->RollNo);
@@ -38,7 +38,7 @@ class resp
    // echo  $respFromDB;
     if($respFromDB ==0)
     {  
-        $query = "INSERT INTO Students (RollNo, Name, EnrollmentNo, Semester, Password, Department, PhoneNo,SNo, SimID) VALUES ('$RollNo', '$Name', '$Enroll',$Sem , '$Pass', '$Dept','$Phone','$Serial', '$Sim')";
+        $query = "INSERT INTO StudentBase (RollNo, Name, EnrollmentNo, Semester, Password, Department, PhoneNo,SNo, SimID) VALUES ('$RollNo', '$Name', '$Enroll',$Sem , '$Pass', '$Dept','$Phone','$Serial')";
         $result = $conn->query($query);
         
         $response->error = "0";
@@ -107,7 +107,7 @@ class resp
     function userExists($RollNo, $Name, $Serial)
     {
         require 'connect.php';
-        $query = "SELECT * FROM Students WHERE RollNo = '$RollNo'";
+        $query = "SELECT * FROM StudentBase WHERE RollNo = '$RollNo'";
         $result = $conn->query($query);
         if($conn->query($query))
         {            
@@ -126,7 +126,7 @@ class resp
             }
             else
             {
-                $query = "SELECT * FROM Students WHERE SNo = '$Serial'";
+                $query = "SELECT * FROM StudentBase WHERE SNo = '$Serial'";
                 $result = $conn->query($query);
                 if($conn->query($query))
                 {            

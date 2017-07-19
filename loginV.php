@@ -92,10 +92,13 @@
           $studentInfo = mysqli_fetch_assoc($result2);
 
           $_SESSION['first_name'] = $studentInfo['FirstName'];
+            $_SESSION['middle_name'] = $studentInfo['MiddleName'];
+            $_SESSION['last_name'] = $studentInfo['LastName'];
           $_SESSION['roll_num'] = $studentInfo['RollNo'];
           $_SESSION['branch'] = $studentInfo['DeptId'];
           $_SESSION['semester'] = $studentInfo['Semester'];
-
+            $_SESSION['teacher_id'] = "";
+            $_SESSION['Email'] = $studentInfo['Email'];
           header("location:studentDashboard.php");
           exit(0);
 
@@ -107,7 +110,11 @@
           $_SESSION['first_name'] = $teacherInfo['FirstName'];
             $_SESSION['middle_name'] = $teacherInfo['MiddleName'];
             $_SESSION['last_name'] = $teacherInfo['LastName'];
+            $_SESSION['roll_num'] = "";
+            $_SESSION['branch'] = "";
+            $_SESSION['semester'] = "";
           $_SESSION['teacher_id'] = $teacherInfo['TId'];
+            $_SESSION['Email'] = $teacherInfo['Email'];
           header('location:teacherDashboard.php');
           exit(0);
         }
