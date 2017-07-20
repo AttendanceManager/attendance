@@ -101,7 +101,7 @@ echo "
     <div class='col-md-2'></div>
     <div class='col-md-8'>
         <div class='well bs-component'>
-            <form class='form-horizontal'>
+            <form class='form-horizontal' action='ChangePswd.php' method='POST'>
                 <fieldset>
                     <legend style='text-align: center;'>
                         Change Password
@@ -109,19 +109,19 @@ echo "
                     <div class='form-group is-empty'>
                         <label for='currentPassword' class='col-md-2 control-label'>Current Password :</label>
                         <div class='col-md-10'>
-                            <input type='password' class='form-control' id='currentPassword' placeholder='Enter Your Current Password' name='currentPassword' required>
+                            <input type='password' class='form-control' id='currentPassword' placeholder='Enter Your Current Password' name='cp' required>
                         </div>
                     </div>
                     <div class='form-group is-empty'>
                         <label for='newPassword' class='col-md-2 control-label'>New Password :</label>
                         <div class='col-md-10'>
-                            <input type='password' class='form-control' id='newPassword' placeholder='Enter Your New Password' name='newPassword' onKeyUp='passwordmatch();' required>
+                            <input type='password' class='form-control' id='newPassword' placeholder='Enter Your New Password' name='np' onKeyUp='passwordmatch();' required>
                         </div>
                     </div>
                     <div class='form-group is-empty'>
                         <label for='confirmNewPassword' class='col-md-2 control-label'>Confirm New Password :</label>
                         <div class='col-md-10'>
-                            <input type='password' class='form-control' id='confirmNewPassword' placeholder='Re-Enter Your New Password' name='confirmNewPassword' onKeyUp='passwordmatch();' required>
+                            <input type='password' class='form-control' id='confirmNewPassword' placeholder='Re-Enter Your New Password' name='cnp' onKeyUp='passwordmatch();' required>
                         </div>
                         <span id='confirmMessage' class='confirmMessage'></span>
                     </div>
@@ -129,7 +129,7 @@ echo "
                         <div class='col-md-10 col-md-offset-2'>
                             <a href='teacherDashboard.php'><button type='button' class='btn btn-default' >Cancel<div class='ripple-container'></div></button></a>
                                     <span id='button_group'>
-                                        <button type='submit' class='btn btn-primary' id='submit_button'>Submit<div class='ripple-container'></div></button>
+                                        <button type='submit' class='btn btn-primary' id='submit_button' name='Submit'>Submit<div class='ripple-container'></div></button>
                                     </span>
                         </div>
                     </div>
@@ -140,8 +140,7 @@ echo "
 </div>
 </body>
 
-
-
+    
     <script src='js/jquery-1.10.2.min.js'></script>
     <script src='js/bootstrap.min.js'></script>
     <script src='js/ripples.min.js'></script>
